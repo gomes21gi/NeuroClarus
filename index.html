@@ -1,110 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroClarus</title>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Kenia+One&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Estilo customizado -->
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroClarus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" type="image/png" href="/img/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+  </div>
 
-    <!-- VLibras -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+  <!-- Navbar -->
+  <nav class="navbar-custom">
+    <a class="navbar-brand" href="index.html"><img src="/img/logo2.svg" alt="NeuroClarus"></a>
+    <div class="nav-links">
+      <a class="nav-link active" href="index.html">Dashboard</a>
+      <a class="nav-link" href="focusmode.html">Focus Mode</a>
+      <a class="nav-link" href="historico.html">Histórico</a>
+    </div>
+    <div></div> <!-- placeholder para manter alinhamento -->
+  </nav>
+
+  <main class="main-container">
+    <h1>Focos do Dia</h1>
+    <p class="subtitle">O seu foco para o progresso intencional.</p>
+
+    <button class="btn btn-primary-custom mb-4" data-bs-toggle="modal" data-bs-target="#focusModal">
+      <i class="fas fa-plus-circle"></i> Adicionar foco
+    </button>
+
+    <!-- Lista de pendentes -->
+    <div id="pendingFocusContainer"></div>
+
+    <!-- Contadores -->
+    <div class="stats-container">
+      <div class="stat-badge pending" id="pendingStats">0 focus</div>
+      <div class="stat-badge completed" id="completedStats">0 focads</div>
     </div>
 
-    <!-- Navbar (mesma de sempre) -->
-    <header>
-        <nav class="navbar navbar-expand-lg custom-navbar">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="img/logo2.svg" alt="NeuroClarus" height="40">
-                </a>
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="focusmode.html">Focus Mode</a></li>
-                        <li class="nav-item"><a class="nav-link" href="historico.html">Histórico</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <!-- Lista de concluídos -->
+    <div id="completedFocusContainer"></div>
+  </main>
 
-    <main class="py-4">
-        <div class="container">
-            <!-- Cabeçalho da página -->
-            <div class="d-grid justify-content-between align-items-start mb-4">
-                <div>
-                    <h1 class="display-5 fw-bold text-gradient mb-2">Focos do Dia</h1>
-                    <p class="text-secondary">O seu foco para o progresso intencional.</p>
-                </div>
-                <button class="btn btn-gradient" data-bs-toggle="modal" data-bs-target="#addFocusModal">
-                    <i class="fas fa-plus me-2"></i>Adicionar focus
-                </button>
-            </div>
-
-            <!-- Container dos cards (row com gap) -->
-            <div class="col g-10" id="focusCardsContainer">
-            </div>
-
-            <!-- Contadores -->
-            <div class="d-flex gap-4 mt-5 pt-3 border-top border-light">
-                <span class="fw-medium"><span class="fw-bold text-purple fs-5" id="focusCount">0</span> focus</span>
-                <span class="fw-medium"><span class="fw-bold text-purple fs-5" id="focaisCount">0</span> focais</span>
-            </div>
+  <!-- Modal Adicionar Foco -->
+  <div class="modal fade" id="focusModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Adicionar Focus novo:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Sair"></button>
         </div>
-    </main>
-
-    <!-- Modal Adicionar Focus (estrutura idêntica à anterior) -->
-    <div class="modal fade" id="addFocusModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content glass-modal border-0 rounded-4">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-semibold">Adicionar Focus novo:</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label fw-medium">Título:</label>
-                        <input type="text" class="form-control rounded-pill" id="focusTitle" placeholder="Ex: Estudar para prova de FIA">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-medium">Atividades:</label>
-                        <div id="activitiesContainer">
-                            <div class="input-group mb-2">
-                                <input type="text" class="form-control rounded-pill activity-input" placeholder="Descreva a atividade">
-                                <button class="btn btn-outline-danger rounded-circle ms-2 d-none" type="button"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-outline-primary rounded-pill mt-1" id="addActivityBtn">
-                            <i class="fas fa-plus-circle me-1"></i> Adicionar
-                        </button>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-medium">Horário:</label>
-                        <input type="time" class="form-control rounded-pill" id="focusTime">
-                    </div>
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-gradient w-100" id="saveFocusBtn">Concluído</button>
-                </div>
+        <div class="modal-body">
+          <form id="focusForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Título:</label>
+              <input type="text" class="form-control" id="focusTitle" placeholder="Ex: Estudar para prova de FIA" required>
             </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Atividades:</label>
+              <div id="activitiesList" class="mb-2"></div>
+              <div class="input-group">
+                <input type="text" class="form-control" id="newActivityInput" placeholder="Escreva uma atividade">
+                <button class="btn btn-outline-secondary" type="button" id="addActivityBtn"><i class="fas fa-plus"></i> Adicionar</button>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Horário:</label>
+              <input type="time" class="form-control" id="focusTime">
+            </div>
+            <div class="form-check d-none">
+              <input class="form-check-input" type="checkbox" id="focusCompleted">
+              <label class="form-check-label">Concluído</label>
+            </div>
+          </form>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" form="focusForm" class="btn btn-primary-custom">Salvar Foco</button>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+  <script src="js/main.js"></script>
 </body>
 </html>
