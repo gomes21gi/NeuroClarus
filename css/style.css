@@ -1,0 +1,239 @@
+/* ===== BASE ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(145deg, #f4f9fc 0%, #e9f2f9 100%);
+    min-height: 100vh;
+    color: #1e2b3a;
+}
+
+/* ===== NAVBAR CUSTOM ===== */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(90, 75, 163, 0.05);
+    padding: 0.8rem 0;
+}
+.custom-navbar .navbar-brand img {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+    transition: transform 0.2s;
+}
+.custom-navbar .navbar-brand:hover img { transform: scale(1.02); }
+.custom-navbar .navbar-toggler {
+    color: #5A4BA3;
+    box-shadow: none;
+    border: none;
+}
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(90, 75, 163, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.custom-navbar .navbar-collapse { justify-content: center; }
+.custom-navbar .navbar-nav { gap: 0.5rem; }
+.custom-navbar .nav-link {
+    color: #4a5568 !important;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 40px;
+    transition: all 0.15s;
+    position: relative;
+}
+.custom-navbar .nav-link:hover {
+    color: #5C8DFF !important;
+    background: rgba(92, 141, 255, 0.05);
+}
+.custom-navbar .nav-link.active {
+    color: #7A6FF0 !important;
+    font-weight: 600;
+    background: transparent;
+}
+.custom-navbar .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background-color: #7A6FF0;
+    border-radius: 3px 3px 0 0;
+}
+@media (max-width: 991.98px) {
+    .custom-navbar .nav-link {
+        padding: 0.6rem 1rem !important;
+        margin: 0.2rem 0;
+        text-align: center;
+    }
+    .custom-navbar .nav-link.active::after {
+        left: 10%;
+        width: 80%;
+        bottom: 4px;
+    }
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 24px;
+        padding: 1rem;
+        margin-top: 0.8rem;
+        border: 1px solid rgba(255,255,255,0.8);
+    }
+}
+
+/* ===== TIPOGRAFIA ===== */
+.text-gradient {
+    background: linear-gradient(135deg, #5A4BA3 0%, #5C8DFF 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.text-purple { color: #7A6FF0 !important; }
+
+/* ===== CARDS ===== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 20px 35px -8px rgba(90, 75, 163, 0.1);
+}
+
+/* ===== BOTÕES ===== */
+.btn-gradient {
+    background: linear-gradient(145deg, #5C8DFF, #7A6FF0);
+    border: 3px solid rgba(122, 111, 240, 0.25);
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.6rem 1.5rem;
+    border-radius: 40px;
+    box-shadow: 0 8px 14px -4px rgba(92, 141, 255, 0.25);
+    transition: all 0.15s;
+}
+.btn-gradient:hover {
+    background: linear-gradient(145deg, #4f7de0, #6a5fd9);
+    color: white;
+    transform: scale(1.02);
+}
+.btn-outline-primary {
+    border-color: #7A6FF0;
+    color: #7A6FF0;
+}
+.btn-outline-primary:hover {
+    background: #7A6FF0;
+    border-color: #7A6FF0;
+    color: white;
+}
+.btn-outline-secondary {
+    border-color: #cbd5e0;
+    color: #4a5568;
+}
+.btn-outline-secondary:hover {
+    background: #e2e8f0;
+    border-color: #cbd5e0;
+    color: #1e2b3a;
+}
+
+/* ===== FORMULÁRIOS ===== */
+.form-control, .form-select {
+    border: 1.5px solid rgba(122, 111, 240, 0.2);
+    background: rgba(255,255,255,0.6);
+    font-family: 'Poppins', sans-serif;
+}
+.form-control:focus {
+    border-color: #5C8DFF;
+    box-shadow: 0 0 0 3px rgba(92, 141, 255, 0.15);
+    background: white;
+}
+
+/* ===== MODAL ===== */
+.glass-modal .modal-content {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.7);
+}
+
+/* ===== TIMER ===== */
+.timer-display {
+    font-family: 'Kenia One', monospace;
+    font-size: 4.5rem;
+    background: linear-gradient(145deg, #5A4BA3, #5C8DFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.2;
+}
+
+/* ===== CHECKBOXES ===== */
+.form-check-input:checked {
+    background-color: #5ED3C6;
+    border-color: #5ED3C6;
+}
+.form-check-input:focus {
+    border-color: #5ED3C6;
+    box-shadow: 0 0 0 3px rgba(94, 211, 198, 0.2);
+}
+
+/* ===== LISTA DE TAREFAS ===== */
+.task-check {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7A6FF0;
+    transition: 0.15s;
+}
+.task-check:hover { color: #5ED3C6; }
+.badge.bg-light {
+    background: rgba(94, 211, 198, 0.15) !important;
+    color: #1e5f5a;
+    border: 1px solid rgba(94, 211, 198, 0.3);
+    font-weight: 500;
+}
+.history-item {
+    border-bottom: 1px solid rgba(94, 211, 198, 0.2);
+    padding: 1rem 0;
+}
+.history-item:last-child { border-bottom: none; }
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 576px) {
+    .timer-display { font-size: 3.5rem; }
+}
+
+/* Badge roxo para "2 focadas" */
+.bg-purple {
+    background-color: #7A6FF0 !important;
+}
+
+/* Ajuste para os cards do histórico */
+.list-unstyled .badge.bg-light {
+    background: rgba(94, 211, 198, 0.15) !important;
+    color: #1e5f5a;
+    border: 1px solid rgba(94, 211, 198, 0.3);
+}
+
+/* css/estilo.css (adições importantes para cards) */
+.focus-card {
+    background: rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 3px solid rgba(122, 111, 240, 0.25) !important;
+    box-shadow: 0 10px 20px -5px rgba(90, 75, 163, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.focus-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -8px rgba(122, 111, 240, 0.5);
+    border-color: #7A6FF0 !important;
+}
+.task-check {
+    font-size: 1.8rem !important;
+    color: #7A6FF0;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+.task-check:hover {
+    color: #5ED3C6 !important;
+}
+/* Garantir gap entre colunas */
+.row.g-4 {
+    --bs-gutter-y: 1.5rem;
+}
